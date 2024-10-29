@@ -5,6 +5,12 @@
 #- AVC/Derrame
 #- Idade
 def sint_chance(chance):
+    if chance <= 2:
+        print("Baixa chance de Alzheimer")
+    elif chance == 3:
+        print("Moderada chance de Alzheimer")
+    elif chance >= 4:
+        print("Alta chance de Alzheimer")
     return chance
 
 def sint_memloss(memloss, chance):
@@ -22,9 +28,10 @@ def sint_tasks(tasks, chance):
         chance += 1
     return chance
 
-def sint_AVC(AVC, chance):
+def sint_AVC(AVC, chance): 
     if AVC == "sim":
-        chance += 1
+        #AVC/derrame aumentam em 80% o desenvolvimento de demencias
+        chance += 2
     return chance
 
 def sint_age(age, chance):
