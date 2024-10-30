@@ -8,7 +8,7 @@
 #- Saúde e rotina
 #- Idade
 
-
+#comparativo de chances para avaliação
 def sint_chance(chance):
     if chance <= 3:
         print("Baixa chance de Alzheimer, Monitoramento é recomendado.")
@@ -18,43 +18,51 @@ def sint_chance(chance):
         print("Alta chance de Alzheimer, Consulta com especialista para melhor avaliação/tratamento é altamente recomendada.")
     return chance
 
+#- Perda de memória 
 def sint_memloss(memloss, chance):
     if memloss == "sim":
         chance += 1
     return chance
 
+#- Mudança de humor/personalidade 
 def sint_mood(mood, chance):
     if mood == "sim":
         chance += 1
     return chance
 
+#- Dificuldade em tarefas básicas
 def sint_tasks(tasks, chance):
     if tasks == "sim":
         chance += 1
     return chance
 
+#- AVC/Derrame
 def sint_AVC(AVC, chance): 
     if AVC == "sim":
         #AVC/derrame aumentam em 80% o desenvolvimento de demências
         chance += 2
     return chance
 
+#- Doenças crônicas
 def sint_illness(illness, chance): 
     if illness == "sim":
         chance += 1
     return chance
-    
+
+#- Histórico familiar
 def sint_famhist(famhist, chance): 
     if famhist == "sim":
         #histórico familiar de alzheimer aumenta as chances
         chance += 2
     return chance
 
+#- Saúde e rotina
 def sint_health(health, chance):
     if health == "nao" or health == "não":
         chance += 1
     return chance
 
+#- Idade
 def sint_age(age, chance):
     if age >= 65:
         chance += 1
@@ -85,6 +93,7 @@ def main():
     chance = sint_health(health, chance)
     chance = sint_age(age, chance)
     
+    # Imprime os resultados de acordo com o Comparativo
     print("Chance =", sint_chance(chance))
 
 main()
