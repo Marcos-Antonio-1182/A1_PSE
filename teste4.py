@@ -26,7 +26,7 @@ class AlzheimerChanceApp:
             ("A pessoa tem dificuldade em realizar tarefas básicas?", 1),
             ("A pessoa já teve caso de AVC/Derrame?", 2),
             ("A pessoa possui algum tipo de doença crônica \n(diabetes, hipertensão, colesterol elevado)?", 1),
-            ("Há histórico de Alzheimer em parentes próximos da pessoa?", 2),
+            ("Há histórico de Alzheimer em parentes próximos?", 2),
             ("A pessoa mantém hábitos saudáveis? \n(responda 'não' se os hábitos forem ruins)", 1),
             ("Informe a idade da pessoa:", "idade")
         ]
