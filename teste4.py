@@ -5,21 +5,22 @@ class AlzheimerChanceApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Avaliação de Chance de Alzheimer")
-        
+        #configurações da janela que será aberta
         self.root.configure(bg="#F7F7FF")
         width = 600
         height = 240
-        self.root.geometry(f"{width}x{height}")
-
-        # Calculate the position to center the window on the screen
+        
+        #faz com que a janela abra no meio da tela
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight()
         x = (screen_width - width) // 2
         y = (screen_height - height) // 2
         self.root.geometry(f"{width}x{height}+{x}+{y}") 
         
+        #define o valor de chance como 0, para que os pesos possam ser adicionados depois
         self.chance = 0
         
+        #define as perguntas e seus pesos
         self.perguntas = [
             ("A pessoa apresenta perda de memória?", 1),
             ("A pessoa apresenta mudanças de humor ou personalidade?", 1),
@@ -34,6 +35,7 @@ class AlzheimerChanceApp:
         self.indice_pergunta = 0
         self.resultado_label = None
 
+        #exibe as perguntas
         self.exibir_pergunta()
 
     def exibir_pergunta(self):
@@ -63,6 +65,7 @@ class AlzheimerChanceApp:
             nao_button = tk.Button(button_frame, text="Não", command=self.proxima_pergunta, bg="#C03221", fg="white", font=("Helvetica", 12), relief="raised", bd=2, padx=10)
             nao_button.pack(side=tk.LEFT, padx=5)
 
+    #def para receber e validar o valor de idade
     def validar_idade(self):
         try:
             idade = int(self.entrada_idade.get())
@@ -72,6 +75,7 @@ class AlzheimerChanceApp:
         except ValueError:
             messagebox.showerror("Erro de entrada", "Por favor, insira uma idade válida.")
 
+    #adiciona os pesos a chance
     def incrementar_chance(self, valor):
         self.chance += valor
         self.proxima_pergunta()
@@ -83,6 +87,7 @@ class AlzheimerChanceApp:
         else:
             self.exibir_resultado()
 
+    #exibe o resultado dentro da página
     def exibir_resultado(self):
         for widget in self.root.winfo_children():
             widget.destroy()
@@ -99,10 +104,11 @@ class AlzheimerChanceApp:
         self.indice_pergunta = 0
         self.exibir_pergunta()
 
+    #define as respostas de acordo com o valor em chance
     def sint_chance(self, chance):
         if chance <= 3:
             return "Baixa chance de Alzheimer. \nMonitoramento é recomendado."
-        elif 4 <= chance <= 5:
+        elif chance <= 5:
             return "Moderada chance de Alzheimer. \nConsulta com especialista é recomendada."
         else:
             return "Alta chance de Alzheimer. \nConsulta com especialista é altamente recomendada."
